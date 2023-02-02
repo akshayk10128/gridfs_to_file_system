@@ -13,8 +13,6 @@ import multiprocessing as mp
 import numpy as np
 import uuid
 from random import randint
-uid = uuid.uuid1()
-
 
 def migration_logger(name):
     """ creates a logger object
