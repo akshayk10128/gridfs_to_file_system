@@ -33,7 +33,7 @@ def migration_logger(name):
 
 client = MongoClient(
     '<connection_string>')
-db = client.fmisgrid3
+db = client.database_name
 data_files = gridfs.GridFS(db)
 FILES_LOCATION = "<folder_location>"
 log_hm = migration_logger("migration")
