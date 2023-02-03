@@ -119,7 +119,6 @@ if __name__ == '__main__':
     if len(sys.argv) > 1 :
         func_name = sys.argv[1]
         if len(sys.argv) > 2 :
-            print(limit)
             limit = int(sys.argv[2])
 
         if func_name == "insert_grid_fs" :
