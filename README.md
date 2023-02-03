@@ -42,9 +42,9 @@ Scripts requires python version 3 or above to run.
 ``` 
 
 #### TODO
- [ ] Adding mongodb connection string, folder name, database name dynamically to system arguments 
- [ ] Use bulk write
- [ ] Add more logging
+- [ ] Adding mongodb connection string, folder name, database name dynamically to system arguments 
+- [ ] Use bulk write
+- [ ] Add more logging
  
 
 
