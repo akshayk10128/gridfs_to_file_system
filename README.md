@@ -1,5 +1,3 @@
-# gridfs_to_file_system
-
 ## Python script to migrate files from MongoDB Gridfs to filesystem
 
 ## Steps to run the script
@@ -42,3 +40,11 @@ Scripts requires python version 3 or above to run.
 - ERROR 2023-02-03 11:35:05,872-63dca40326f8ddb807394e81 :: 0358f16b-f8fb-4ba3-aa0a-830cdfeb9996.txt :: name 'destinations' is not defined
 - ERROR 2023-02-03 11:35:05,872-63dca40317de685692b31eba :: 60865ed9-60d8-443f-b0d4-82145d84cf73.txt :: name 'destinations' is not defined
 ``` 
+
+#### TODO
+ [ ] Adding mongodb connection string, folder name, database name dynamically  
+ [ ] Use bulk write
+ [ ] Add more logging
+ 
+
+
