@@ -124,12 +124,11 @@ if __name__ == '__main__':
 
         if func_name == "insert_grid_fs" :
             start_processor(10)
-        elif func_name == "fetch_grid_fs" :
+        elif func_name == "migrate_files" :
             fetch_grid_fs(limit)
         else:
-            print( "Please specify the correct function name")
+            print( "Please specify the correct argument")
             sys.exit()
     else: 
-        print( "Please specify the function name")
+        print( "Please specify the argument")
         sys.exit()
-
