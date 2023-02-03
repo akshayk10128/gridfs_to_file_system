@@ -13,6 +13,7 @@ import multiprocessing as mp
 import numpy as np
 import uuid
 from random import randint
+import sys
 
 def migration_logger(name):
     """ creates a logger object
@@ -34,7 +35,7 @@ client = MongoClient(
     '<connection_string>')
 db = client.fmisgrid3
 data_files = gridfs.GridFS(db)
-FILES_LOCATION = "<file_location>"
+FILES_LOCATION = "<folder_location>"
 log_hm = migration_logger("migration")
 
 
@@ -63,11 +64,17 @@ def fetch_grid_fs(limit):
     Args:
         limit (int): number of records to fetch
     """
-    data = db.fs.files.find({}, {"_id": 1, "clientId": 1, "filename": 1}).sort(
-        "_id", pymongo.DESCENDING).limit(limit)
+    print(limit)
+    if limit > 0:
+        data = db.fs.files.find({}, {"_id": 1, "clientId": 1, "filename": 1}).sort(
+            "_id", pymongo.DESCENDING).limit(limit)
+    else: 
+        data = db.fs.files.find({}, {"_id": 1, "clientId": 1, "filename": 1}).sort(
+            "_id", pymongo.DESCENDING)
     for i in data:
         file_name = i["filename"]
         destination = FILES_LOCATION + "/" + str(i["clientId"])
+        print ("Migrating file with _id " + str(i['_id']))
         save_file(file_name, i['_id'], destination)
 
 
@@ -108,9 +115,21 @@ def start_processor(k):
 
 if __name__ == '__main__':
     fake = Faker()
+    limit = 0
+    if len(sys.argv) > 1 :
+        func_name = sys.argv[1]
+        if len(sys.argv) > 2 :
+            print(limit)
+            limit = int(sys.argv[2])
 
-    # use fetch_grid_fs to fetch and save files
-    fetch_grid_fs(10)
+        if func_name == "insert_grid_fs" :
+            start_processor(10)
+        elif func_name == "fetch_grid_fs" :
+            fetch_grid_fs(limit)
+        else:
+            print( "Please specify the correct function name")
+            sys.exit()
+    else: 
+        print( "Please specify the function name")
+        sys.exit()
 
-    # to insert data into grid fs for testing
-    # start_processor(10000)
