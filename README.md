@@ -41,7 +41,7 @@ Scripts requires python version 3 or above to run.
 - ERROR 2023-02-03 11:35:05,872-63dca40317de685692b31eba :: 60865ed9-60d8-443f-b0d4-82145d84cf73.txt :: name 'destinations' is not defined
 ``` 
 
-#### TODO
+#### Improvements
 - [ ] Adding mongodb connection string, folder name, database name dynamically to system arguments 
 - [ ] Use bulk write
 - [ ] Add more logging
